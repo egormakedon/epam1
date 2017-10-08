@@ -21,6 +21,11 @@ public class Dot extends Object {
         this.y = y;
     }
 
+    public void set(double x, double y) {
+        this.setX(x);
+        this.setY(y);
+    }
+
     public double getX() {
         return x;
     }
