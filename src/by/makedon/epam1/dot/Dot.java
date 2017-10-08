@@ -1,6 +1,6 @@
 package by.makedon.epam1.dot;
 
-public class Dot {
+public class Dot extends Object {
     private double x;
     private double y;
 
@@ -27,5 +27,35 @@ public class Dot {
 
     public double getY() {
         return y;
+    }
+
+    @Override
+    public String toString() {
+        return "(" + x + "," + y + ")";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Dot dot = (Dot) obj;
+        if (x != dot.getX())
+            return false;
+        if (y != dot.getY())
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + (int) x;
+        result = prime * result + (int) y;
+        return result;
     }
 }
