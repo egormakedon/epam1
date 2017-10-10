@@ -1,15 +1,33 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
 <suite name="Suite1" verbose="1" >
-    <test name="InParam" >
+    <test name="TestDotAction" >
         <classes>
-            <class name="by.makedon.epam1.testing.TestInParam" />
+            <class name="TestDotAction" />
         </classes>
     </test>
 
-    <test name="CalcParam">
+    <test name="TestTriangleAction">
         <classes>
-            <class name="by.makedon.epam1.testing.TestCalcParam"/>
+            <class name="TestTriangleAction"/>
+        </classes>
+    </test>
+
+    <test name="TestTriangle">
+        <classes>
+            <class name="TestTriangle"/>
+        </classes>
+    </test>
+
+    <test name="TestInputValidation">
+        <classes>
+            <class name="TestInputValidation"/>
+        </classes>
+    </test>
+
+    <test name="TestReadingFile">
+        <classes>
+            <class name="TestReadingFile"/>
         </classes>
     </test>
 </suite>

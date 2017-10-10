@@ -8,7 +8,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class TriangleAction {
-    static Logger logger = LogManager.getLogger(TriangleAction.class);
+    private static Logger logger = LogManager.getLogger(TriangleAction.class);
     public double calculateArea(Triangle triangle) throws WrongInputParamsExc {
         int index = 0;
         Dot dot1 = triangle.getDot(index);
@@ -20,10 +20,11 @@ public class TriangleAction {
         Dot dot3 = triangle.getDot(index);
 
         DotAction dotAction = new DotAction();
-        double side1 = dotAction.calculateDistanceBeetwenDots(dot1, dot2);
-        double side2 = dotAction.calculateDistanceBeetwenDots(dot2, dot3);
-        double side3 = dotAction.calculateDistanceBeetwenDots(dot1, dot3);
-        double area = Math.sqrt((side1 + side2 + side3) * (side2 + side3) * (side1 + side3) * (side1 + side2));
+        double side1 = dotAction.calculateDistance(dot1, dot2);
+        double side2 = dotAction.calculateDistance(dot2, dot3);
+        double side3 = dotAction.calculateDistance(dot1, dot3);
+        double halfP = (side1 + side2 + side3) / 2;
+        double area = Math.sqrt(halfP * (halfP - side1) * (halfP - side2) * (halfP - side3));
 
         logger.log(Level.INFO, "triangle " + triangle.toString() + " has area " + area);
         return area;
@@ -39,9 +40,9 @@ public class TriangleAction {
         Dot dot3 = triangle.getDot(index);
 
         DotAction dotAction = new DotAction();
-        double side1 = dotAction.calculateDistanceBeetwenDots(dot1, dot2);
-        double side2 = dotAction.calculateDistanceBeetwenDots(dot2, dot3);
-        double side3 = dotAction.calculateDistanceBeetwenDots(dot1, dot3);
+        double side1 = dotAction.calculateDistance(dot1, dot2);
+        double side2 = dotAction.calculateDistance(dot2, dot3);
+        double side3 = dotAction.calculateDistance(dot1, dot3);
         double perimeter = side1 + side2 + side3;
 
         logger.log(Level.INFO, "triangle " + triangle.toString() + " has perimeter " + perimeter);

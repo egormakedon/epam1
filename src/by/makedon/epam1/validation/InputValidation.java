@@ -16,18 +16,18 @@ public class InputValidation {
 
     public boolean isDotsComposeTriangle(Dot dot1, Dot dot2, Dot dot3) {
         DotAction dotAction = new DotAction();
-        double side1 = dotAction.calculateDistanceBeetwenDots(dot1, dot2);
-        double side2 = dotAction.calculateDistanceBeetwenDots(dot2, dot3);
-        double side3 = dotAction.calculateDistanceBeetwenDots(dot1, dot3);
+        double side1 = dotAction.calculateDistance(dot1, dot2);
+        double side2 = dotAction.calculateDistance(dot2, dot3);
+        double side3 = dotAction.calculateDistance(dot1, dot3);
 
         return ((side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1));
     }
 
     public boolean isDotsComposeTriangle(Dot[] dots) {
         DotAction dotAction = new DotAction();
-        double side1 = dotAction.calculateDistanceBeetwenDots(dots[0], dots[1]);
-        double side2 = dotAction.calculateDistanceBeetwenDots(dots[1], dots[2]);
-        double side3 = dotAction.calculateDistanceBeetwenDots(dots[0], dots[2]);
+        double side1 = dotAction.calculateDistance(dots[0], dots[1]);
+        double side2 = dotAction.calculateDistance(dots[1], dots[2]);
+        double side3 = dotAction.calculateDistance(dots[0], dots[2]);
 
         return ((side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1));
     }
@@ -43,11 +43,11 @@ public class InputValidation {
 
     public boolean validation(Dot[] dots) throws WrongInputParamsExc {
         if (dots.length > DOT_AMOUNT) {
-            logger.log(Level.ERROR, "mush params: " + dots.length);
-            throw new WrongInputParamsExc("mush params " + dots.length);
+            logger.log(Level.ERROR, "much params: " + dots.length);
+            throw new WrongInputParamsExc("much params: " + dots.length);
         } else if (dots.length < DOT_AMOUNT) {
-            logger.log(Level.ERROR, "less params " + dots.length);
-            throw new WrongInputParamsExc("less params " + dots.length);
+            logger.log(Level.ERROR, "less params: " + dots.length);
+            throw new WrongInputParamsExc("less params: " + dots.length);
         } else {
             if(isDotsComposeTriangle(dots)) {
                 return true;

@@ -3,7 +3,7 @@ package by.makedon.epam1.action;
 import by.makedon.epam1.entity.Dot;
 
 public class DotAction {
-    public double calculateDistanceBeetwenDots(Dot dot1, Dot dot2) {
+    public double calculateDistance(Dot dot1, Dot dot2) {
         return Math.hypot(dot1.getX() - dot2.getX(), dot1.getY() - dot2.getY());
     }
 

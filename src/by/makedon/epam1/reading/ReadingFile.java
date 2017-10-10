@@ -18,7 +18,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class ReadingFile {
-    static Logger logger = LogManager.getLogger(ReadingFile.class);
+    private static Logger logger = LogManager.getLogger(ReadingFile.class);
 
     public boolean isFileExist(String fileName) {
         File file = new File(fileName);
