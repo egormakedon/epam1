@@ -4,6 +4,7 @@ import by.makedon.epam1.entity.Dot;
 import by.makedon.epam1.exception.DataNotFoundExc;
 import by.makedon.epam1.exception.FileNotFoundExc;
 import by.makedon.epam1.parser.StringDataParser;
+import by.makedon.epam1.validation.InputValidation;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -36,10 +37,11 @@ public class ReadingFile {
             try {
                 in = new Scanner(new File(fileName));
                 dataList = new ArrayList<>();
+                InputValidation inputValidation = new InputValidation();
 
                 while (in.hasNextLine()) {
                     String stringData = in.nextLine();
-                    if (checkDataOnCorrect(stringData)) {
+                    if (inputValidation.validation(stringData)) {
                         dataList.add(stringData);
                     } else {
                         logger.log(Level.INFO, stringData + " has wrong parameters");
@@ -67,17 +69,5 @@ public class ReadingFile {
             logger.log(Level.ERROR,fileName + " didn't find");
             throw new FileNotFoundExc(fileName + " didn't find");
         }
-    }
-
-    public boolean checkDataOnCorrect(String stringData) {
-        final String REGEX = "([0-9]{1,}\\.[0-9]{1,}\\s" +
-                              "[0-9]{1,}\\.[0-9]{1,}\\s" +
-                              "[0-9]{1,}\\.[0-9]{1,}\\s" +
-                              "[0-9]{1,}\\.[0-9]{1,}\\s" +
-                              "[0-9]{1,}\\.[0-9]{1,}\\s" +
-                              "[0-9]{1,}\\.[0-9]{1,})";
-        Pattern pattern = Pattern.compile(REGEX);
-        Matcher matcher = pattern.matcher(stringData);
-        return matcher.matches();
     }
 }
