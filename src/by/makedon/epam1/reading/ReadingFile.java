@@ -33,26 +33,22 @@ public class ReadingFile {
     public List<Dot[]> readData(String fileName) throws FileNotFoundExc, DataNotFoundExc {
         if (isFileExist(fileName)) {
             Scanner in = null;
-            List<String> dataList;
             try {
                 in = new Scanner(new File(fileName));
-                dataList = new ArrayList<>();
-                InputValidation inputValidation = new InputValidation();
+                List<Dot[]> dataList = new ArrayList<>();
+                StringDataParser parser = new StringDataParser();
 
                 while (in.hasNextLine()) {
                     String stringData = in.nextLine();
-                    if (inputValidation.validation(stringData)) {
-                        dataList.add(stringData);
+                    if (parser.isParseString(stringData)) {
+                        dataList.add(parser.takeData(stringData));
                     } else {
                         logger.log(Level.INFO, stringData + " has wrong parameters");
                     }
                 }
 
                 if (dataList.size() != 0) {
-                    StringDataParser stringDataParser = new StringDataParser();
-                    List<Dot[]> dotsList = stringDataParser.parse(dataList);
-                    return dotsList;
-
+                    return dataList;
                 } else {
                     logger.log(Level.ERROR, fileName + " hasn't none correct line of parameters");
                     throw new DataNotFoundExc(fileName + " hasn't none correct line of parameters");

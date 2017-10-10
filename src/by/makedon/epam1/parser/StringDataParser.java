@@ -1,31 +1,33 @@
 package by.makedon.epam1.parser;
 
 import by.makedon.epam1.entity.Dot;
-
-import java.util.ArrayList;
-import java.util.List;
+import by.makedon.epam1.exception.WrongInputParamsExc;
+import by.makedon.epam1.validation.InputValidation;
 
 public class StringDataParser {
-    private final int DOT_AMOUNT = 3;
-    public List<Dot[]> parse(List<String> dataList) {
-        List<Dot[]> dotsList = new ArrayList<>();
-        for (String dataLine : dataList) {
-            String[] splitDataLine = splitString(dataLine);
-            dotsList.add(takeData(splitDataLine));
+    public boolean isParseString(String stringData) {
+        InputValidation inputValidation = new InputValidation();
+        if (inputValidation.validation(stringData)) {
+            try {
+                return inputValidation.validation(takeData(stringData));
+            } catch (WrongInputParamsExc wrongInputParamsExc) {
+                wrongInputParamsExc.getMessage();
+                return false;
+            }
+        } else {
+            return false;
         }
-        return dotsList;
     }
 
-    private Dot[] takeData(String[] splitDataLine) {
+    public Dot[] takeData(String stringData) {
+        String[] strings = stringData.split(" ");
+
+        final int DOT_AMOUNT = 3;
         Dot[] dots = new Dot[DOT_AMOUNT];
-        dots[0] = new Dot((Double.parseDouble(splitDataLine[0])), Double.parseDouble(splitDataLine[1]));
-        dots[1] = new Dot((Double.parseDouble(splitDataLine[2])), Double.parseDouble(splitDataLine[3]));
-        dots[2] = new Dot((Double.parseDouble(splitDataLine[4])), Double.parseDouble(splitDataLine[5]));
+        dots[0] = new Dot((Double.parseDouble(strings[0])), Double.parseDouble(strings[1]));
+        dots[1] = new Dot((Double.parseDouble(strings[2])), Double.parseDouble(strings[3]));
+        dots[2] = new Dot((Double.parseDouble(strings[4])), Double.parseDouble(strings[5]));
 
         return dots;
-    }
-
-    private String[] splitString(String string) {
-        return string.split(" ");
     }
 }

@@ -49,7 +49,7 @@ public class TestReadingFile {
         expectedList.add(new Dot[3]);
         expectedList.get(1)[0] = new Dot(1, 0);
         expectedList.get(1)[1] = new Dot(1, 4);
-        expectedList.get(1)[2] = new Dot(10, 20);
+        expectedList.get(1)[2] = new Dot(10, 0);
 
         expectedList.add(new Dot[3]);
         expectedList.get(2)[0] = new Dot(1, 1);
@@ -61,6 +61,12 @@ public class TestReadingFile {
         expectedList.get(3)[1] = new Dot(3, 2);
         expectedList.get(3)[2] = new Dot(4, 5);
 
+//        for (Dot[] dots : result) {
+//            for (Dot dot : dots) {
+//                System.out.println(dot.toString() + " ");
+//            }
+//            System.out.println("\n");
+//        }
         Assert.assertEquals(result, expectedList);
     }
 
