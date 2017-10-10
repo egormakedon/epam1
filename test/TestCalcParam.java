@@ -1,6 +1,6 @@
-import by.makedon.epam1.dot.Dot;
-import by.makedon.epam1.triangle.Triangle;
-import by.makedon.epam1.triangle.TriangleAction;
+import by.makedon.epam1.entity.Dot;
+import by.makedon.epam1.entity.Triangle;
+import by.makedon.epam1.action.TriangleAction;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;

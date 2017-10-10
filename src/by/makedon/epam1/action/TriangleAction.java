@@ -1,6 +1,7 @@
-package by.makedon.epam1.triangle;
+package by.makedon.epam1.action;
 
-import by.makedon.epam1.dot.Dot;
+import by.makedon.epam1.entity.Dot;
+import by.makedon.epam1.entity.Triangle;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
