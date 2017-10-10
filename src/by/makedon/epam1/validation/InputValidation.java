@@ -11,7 +11,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputValidation {
-    private static Logger logger = LogManager.getLogger(InputValidation.class);
+    static Logger logger = LogManager.getLogger(InputValidation.class);
     private final int DOT_AMOUNT = 3;
 
     public boolean isDotsComposeTriangle(Dot dot1, Dot dot2, Dot dot3) {
@@ -22,7 +22,6 @@ public class InputValidation {
 
         return ((side1 + side2 > side3) && (side1 + side3 > side2) && (side2 + side3 > side1));
     }
-
     public boolean isDotsComposeTriangle(Dot[] dots) {
         DotAction dotAction = new DotAction();
         double side1 = dotAction.calculateDistance(dots[0], dots[1]);
@@ -40,7 +39,6 @@ public class InputValidation {
             throw new WrongInputParamsExc(dot1.toString() + " " + dot2.toString() + " " + dot3.toString() +" don't compose triangle");
         }
     }
-
     public boolean validation(Dot[] dots) throws WrongInputParamsExc {
         if (dots.length > DOT_AMOUNT) {
             logger.log(Level.ERROR, "much params: " + dots.length);
@@ -57,7 +55,6 @@ public class InputValidation {
             }
         }
     }
-
     public boolean validation(int index) throws WrongInputParamsExc {
         if (index > DOT_AMOUNT - 1) {
             return false;
@@ -66,7 +63,6 @@ public class InputValidation {
         }
         return true;
     }
-
     public boolean validation(String stringData) {
         final String REGEX = "([0-9]{1,}\\.[0-9]{1,}\\s" +
                 "[0-9]{1,}\\.[0-9]{1,}\\s" +

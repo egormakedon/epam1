@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class Triangle {
     private Dot[] dots;
     private final int DOT_AMOUNT = 3;
-    private static Logger logger = LogManager.getLogger(Triangle.class);
+    static Logger logger = LogManager.getLogger(Triangle.class);
 
     public Triangle(Dot dot1, Dot dot2, Dot dot3) throws WrongInputParamsExc {
         InputValidation inputValidation = new InputValidation();
@@ -34,6 +34,7 @@ public class Triangle {
             logger.log(Level.INFO, this.toString() + " create successfully");
         }
     }
+
     public void set(Dot dot1, Dot dot2, Dot dot3) throws WrongInputParamsExc {
         InputValidation inputValidation = new InputValidation();
         if(inputValidation.validation(dot1, dot2, dot3)) {

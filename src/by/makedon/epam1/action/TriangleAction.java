@@ -8,7 +8,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class TriangleAction {
-    private static Logger logger = LogManager.getLogger(TriangleAction.class);
+    static Logger logger = LogManager.getLogger(TriangleAction.class);
+
     public double calculateArea(Triangle triangle) throws WrongInputParamsExc {
         int index = 0;
         Dot dot1 = triangle.getDot(index);
@@ -29,6 +30,7 @@ public class TriangleAction {
         logger.log(Level.INFO, "triangle " + triangle.toString() + " has area " + area);
         return area;
     }
+
     public double calculatePerimeter(Triangle triangle) throws WrongInputParamsExc {
         int index = 0;
         Dot dot1 = triangle.getDot(index);
