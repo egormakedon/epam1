@@ -1,7 +1,7 @@
 import by.makedon.epam1.action.TriangleAction;
 import by.makedon.epam1.entity.Dot;
 import by.makedon.epam1.entity.Triangle;
-import by.makedon.epam1.exception.WrongInputParamsExc;
+import by.makedon.epam1.exception.WrongDataException;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -20,44 +20,34 @@ public class TestTriangleAction {
     }
 
     @Test
-    public void calculateAreaTest() throws WrongInputParamsExc {
+    public void calculateAreaTest() throws WrongDataException {
         Triangle triangle = new Triangle(new Dot(0,0), new Dot(0,10), new Dot(20,0));
         double area = triangleAction.calculateArea(triangle);
         double excepted = 100;
-        Assert.assertEquals(area, excepted);
+        Assert.assertEquals(area, excepted, 0.00001);
     }
 
     @Test
-    public void calculateAreaNotEqTest() throws WrongInputParamsExc {
+    public void calculateAreaNotEqTest() throws WrongDataException {
         Triangle triangle = new Triangle(new Dot(-100,20), new Dot(1000,10), new Dot(20,0));
         double area = triangleAction.calculateArea(triangle);
         double excepted = 100;
-        Assert.assertNotEquals(area, excepted);
-    }
-
-    @Test (expectedExceptions = WrongInputParamsExc.class)
-    public void calculateAreaWrongTriangleTest() throws WrongInputParamsExc {
-        Triangle triangle = new Triangle(new Dot(1,1), new Dot(2,2), new Dot(3,3));
+        Assert.assertNotEquals(area, excepted, 0.00001);
     }
 
     @Test
-    public void calculatePerimeterTest() throws WrongInputParamsExc {
+    public void calculatePerimeterTest() throws WrongDataException {
         Triangle triangle = new Triangle(new Dot(10, 10), new Dot(1, 5), new Dot(1,0));
         double perimeter = triangleAction.calculatePerimeter(triangle);
         double excepted = 28.74925418806071;
-        Assert.assertEquals(excepted, perimeter);
+        Assert.assertEquals(excepted, perimeter, 0.00001);
     }
 
     @Test
-    public void calculatePerimeterNotEqTest() throws WrongInputParamsExc {
+    public void calculatePerimeterNotEqTest() throws WrongDataException {
         Triangle triangle = new Triangle(new Dot(10, 10), new Dot(1, 5), new Dot(1,0));
         double perimeter = triangleAction.calculatePerimeter(triangle);
         double excepted = 250;
-        Assert.assertNotEquals(excepted, perimeter);
-    }
-
-    @Test (expectedExceptions = WrongInputParamsExc.class)
-    public void calculatePerimeterWrongTriangleTest() throws WrongInputParamsExc {
-        Triangle triangle = new Triangle(new Dot(1,1), new Dot(2,2), new Dot(3,3));
+        Assert.assertNotEquals(excepted, perimeter, 0.00001);
     }
 }

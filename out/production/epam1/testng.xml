@@ -19,15 +19,15 @@
         </classes>
     </test>
 
-    <test name="TestInputValidation">
+    <test name="TestTriangleDataInputValidator">
         <classes>
-            <class name="TestInputValidation"/>
+            <class name="TestTriangleDataInputValidator"/>
         </classes>
     </test>
 
-    <test name="TestReadingFile">
+    <test name="TestReaderOfFile">
         <classes>
-            <class name="TestReadingFile"/>
+            <class name="TestReaderOfFile"/>
         </classes>
     </test>
 </suite>

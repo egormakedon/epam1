@@ -1,8 +1,8 @@
 package by.makedon.epam1.entity;
 
 import by.makedon.epam1.action.DotAction;
-import by.makedon.epam1.exception.WrongInputParamsExc;
-import by.makedon.epam1.validation.InputValidation;
+import by.makedon.epam1.exception.WrongDataException;
+import by.makedon.epam1.validator.TriangleDataInputValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,54 +14,72 @@ public class Triangle {
     private final int DOT_AMOUNT = 3;
     static Logger logger = LogManager.getLogger(Triangle.class);
 
-    public Triangle(Dot dot1, Dot dot2, Dot dot3) throws WrongInputParamsExc {
-        InputValidation inputValidation = new InputValidation();
-        if(inputValidation.validation(dot1, dot2, dot3)) {
-            dots = new Dot[DOT_AMOUNT];
-            dots[0] = dot1;
-            dots[1] = dot2;
-            dots[2] = dot3;
-            logger.log(Level.INFO, this.toString() + " create successfully");
+    public Triangle(Dot dot1, Dot dot2, Dot dot3) {
+        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        try {
+            if(triangleDataInputValidator.dotsValidation(dot1, dot2, dot3)) {
+                dots = new Dot[DOT_AMOUNT];
+                dots[0] = dot1;
+                dots[1] = dot2;
+                dots[2] = dot3;
+                logger.log(Level.INFO, this.toString() + " create successfully");
+            }
+        } catch (WrongDataException exception) {
+            logger.log(Level.ERROR, exception.getMessage());
         }
     }
-    public Triangle(Dot[] dots) throws WrongInputParamsExc {
-        InputValidation inputValidation = new InputValidation();
-        if(inputValidation.validation(dots)) {
-            this.dots = new Dot[DOT_AMOUNT];
-            this.dots[0] = dots[0];
-            this.dots[1] = dots[1];
-            this.dots[2] = dots[2];
-            logger.log(Level.INFO, this.toString() + " create successfully");
-        }
-    }
-
-    public void set(Dot dot1, Dot dot2, Dot dot3) throws WrongInputParamsExc {
-        InputValidation inputValidation = new InputValidation();
-        if(inputValidation.validation(dot1, dot2, dot3)) {
-            dots[0] = dot1;
-            dots[1] = dot2;
-            dots[2] = dot3;
-            logger.log(Level.INFO, this.toString() + " create successfully");
-        }
-    }
-    public void set(Dot[] dots) throws WrongInputParamsExc {
-        InputValidation inputValidation = new InputValidation();
-        if(inputValidation.validation(dots)) {
+    public Triangle(Dot[] dots) {
+        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        try {
+            if(triangleDataInputValidator.dotsValidation(dots)) {
+                this.dots = new Dot[DOT_AMOUNT];
                 this.dots[0] = dots[0];
                 this.dots[1] = dots[1];
                 this.dots[2] = dots[2];
                 logger.log(Level.INFO, this.toString() + " create successfully");
+            }
+        } catch (WrongDataException exception) {
+            logger.log(Level.ERROR, exception.getMessage());
         }
     }
 
-    public Dot getDot(int index) throws WrongInputParamsExc {
-        InputValidation inputValidation = new InputValidation();
-        if (inputValidation.validation(index)) {
-            return dots[index];
-        } else {
-            logger.log(Level.ERROR, "overstepping, index: " + index);
-            throw new WrongInputParamsExc("overstepping, index: " + index);
+    public void set(Dot dot1, Dot dot2, Dot dot3) {
+        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        try {
+            if(triangleDataInputValidator.dotsValidation(dot1, dot2, dot3)) {
+                dots[0] = dot1;
+                dots[1] = dot2;
+                dots[2] = dot3;
+                logger.log(Level.INFO, this.toString() + " create successfully");
+            }
+        } catch (WrongDataException exception) {
+            logger.log(Level.ERROR, exception.getMessage());
         }
+    }
+    public void set(Dot[] dots) {
+        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        try {
+            if(triangleDataInputValidator.dotsValidation(dots)) {
+                    this.dots[0] = dots[0];
+                    this.dots[1] = dots[1];
+                    this.dots[2] = dots[2];
+                    logger.log(Level.INFO, this.toString() + " create successfully");
+            }
+        } catch (WrongDataException exception) {
+            logger.log(Level.ERROR, exception.getMessage());
+        }
+    }
+
+    public Dot getDot(int index) throws WrongDataException {
+        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        try {
+            if (triangleDataInputValidator.indexValidation(index)) {
+                return dots[index];
+            }
+        } catch (WrongDataException exception) {
+            logger.log(Level.ERROR, exception.getMessage());
+        }
+        return null;
     }
 
     public boolean isRect() {

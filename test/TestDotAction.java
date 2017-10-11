@@ -22,14 +22,14 @@ public class TestDotAction {
     public void calculateDistanceTest() {
         double result = dotAction.calculateDistance(new Dot(0, 0), new Dot(4, 3));
         double expected = 5;
-        Assert.assertEquals(result, expected);
+        Assert.assertEquals(result, expected, 0.00001);
     }
 
     @Test
     public void calculateDistanceNotEqTest() {
         double result = dotAction.calculateDistance(new Dot(-1, -1), new Dot(4, 3));
         double expected = 5;
-        Assert.assertNotEquals(result, expected);
+        Assert.assertNotEquals(result, expected, 0.00001);
     }
 
     @Test
