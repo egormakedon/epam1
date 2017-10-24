@@ -2,15 +2,15 @@ package by.makedon.epam1.parser;
 
 import by.makedon.epam1.entity.Dot;
 import by.makedon.epam1.exception.WrongDataException;
-import by.makedon.epam1.validator.ParserValidator;
-import by.makedon.epam1.validator.TriangleDataInputValidator;
+import by.makedon.epam1.validator.StringDataParserValidator;
+import by.makedon.epam1.validator.TriangleValidator;
 
 public class StringDataParser {
     public boolean isParseString(String stringData, String delimiter) throws WrongDataException {
-        ParserValidator parserValidator = new ParserValidator();
-        if (parserValidator.validation(stringData)) {
-            TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
-            return triangleDataInputValidator.dotsValidation(takeDots(stringData, delimiter));
+        StringDataParserValidator stringDataParserValidator = new StringDataParserValidator();
+        if (stringDataParserValidator.validation(stringData)) {
+            TriangleValidator triangleValidator = new TriangleValidator();
+            return triangleValidator.dotsValidation(takeDots(stringData, delimiter));
         } else {
             throw new WrongDataException(stringData + " hasn't read: wrong parameters");
         }

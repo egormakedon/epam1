@@ -2,7 +2,8 @@ package by.makedon.epam1.entity;
 
 import by.makedon.epam1.action.DotAction;
 import by.makedon.epam1.exception.WrongDataException;
-import by.makedon.epam1.validator.TriangleDataInputValidator;
+import by.makedon.epam1.validator.TriangleValidator;
+import by.makedon.epam1.validator.TriangleIndexValidator;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -15,9 +16,9 @@ public class Triangle {
     static Logger logger = LogManager.getLogger(Triangle.class);
 
     public Triangle(Dot dot1, Dot dot2, Dot dot3) {
-        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        TriangleValidator triangleValidator = new TriangleValidator();
         try {
-            if(triangleDataInputValidator.dotsValidation(dot1, dot2, dot3)) {
+            if(triangleValidator.dotsValidation(dot1, dot2, dot3)) {
                 dots = new Dot[DOT_AMOUNT];
                 dots[0] = dot1;
                 dots[1] = dot2;
@@ -29,9 +30,9 @@ public class Triangle {
         }
     }
     public Triangle(Dot[] dots) {
-        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        TriangleValidator triangleValidator = new TriangleValidator();
         try {
-            if(triangleDataInputValidator.dotsValidation(dots)) {
+            if(triangleValidator.dotsValidation(dots)) {
                 this.dots = new Dot[DOT_AMOUNT];
                 this.dots[0] = dots[0];
                 this.dots[1] = dots[1];
@@ -44,9 +45,9 @@ public class Triangle {
     }
 
     public void set(Dot dot1, Dot dot2, Dot dot3) {
-        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        TriangleValidator triangleValidator = new TriangleValidator();
         try {
-            if(triangleDataInputValidator.dotsValidation(dot1, dot2, dot3)) {
+            if(triangleValidator.dotsValidation(dot1, dot2, dot3)) {
                 dots[0] = dot1;
                 dots[1] = dot2;
                 dots[2] = dot3;
@@ -57,9 +58,9 @@ public class Triangle {
         }
     }
     public void set(Dot[] dots) {
-        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        TriangleValidator triangleValidator = new TriangleValidator();
         try {
-            if(triangleDataInputValidator.dotsValidation(dots)) {
+            if(triangleValidator.dotsValidation(dots)) {
                     this.dots[0] = dots[0];
                     this.dots[1] = dots[1];
                     this.dots[2] = dots[2];
@@ -71,9 +72,9 @@ public class Triangle {
     }
 
     public Dot getDot(int index) throws WrongDataException {
-        TriangleDataInputValidator triangleDataInputValidator = new TriangleDataInputValidator();
+        TriangleIndexValidator triangleIndexValidator = new TriangleIndexValidator();
         try {
-            if (triangleDataInputValidator.indexValidation(index)) {
+            if (triangleIndexValidator.indexValidation(index)) {
                 return dots[index];
             }
         } catch (WrongDataException exception) {

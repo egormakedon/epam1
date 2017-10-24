@@ -1,15 +1,15 @@
-import by.makedon.epam1.validator.ParserValidator;
+import by.makedon.epam1.validator.StringDataParserValidator;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-public class TestParserValidator {
-    private ParserValidator parser;
+public class TestStringDataParserValidator {
+    private StringDataParserValidator parser;
 
     @BeforeTest
     public void set() {
-        parser = new ParserValidator();
+        parser = new StringDataParserValidator();
     }
 
     @AfterTest

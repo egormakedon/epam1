@@ -52,10 +52,10 @@ public class ReaderOfFile {
                 if (scanner != null) scanner.close();
             }
 
-            if (fileDataList.isEmpty()) {
-                throw new IncorrectFileException("filename hasn't correct data");
-            } else {
+            if (!fileDataList.isEmpty()) {
                 return fileDataList;
+            } else {
+                throw new IncorrectFileException("filename hasn't correct data");
             }
 
         } else {

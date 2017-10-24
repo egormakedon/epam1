@@ -19,9 +19,9 @@
         </classes>
     </test>
 
-    <test name="TestTriangleDataInputValidator">
+    <test name="TestTriangleValidator">
         <classes>
-            <class name="TestTriangleDataInputValidator"/>
+            <class name="TestTriangleValidator"/>
         </classes>
     </test>
 

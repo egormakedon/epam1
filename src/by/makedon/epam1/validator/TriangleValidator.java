@@ -4,7 +4,7 @@ import by.makedon.epam1.action.DotAction;
 import by.makedon.epam1.entity.Dot;
 import by.makedon.epam1.exception.WrongDataException;
 
-public class TriangleDataInputValidator {
+public class TriangleValidator {
     public boolean dotsValidation(Dot dot1, Dot dot2, Dot dot3) throws WrongDataException {
         DotAction dotAction = new DotAction();
         double side1 = dotAction.calculateDistance(dot1, dot2);
@@ -28,17 +28,6 @@ public class TriangleDataInputValidator {
             throw new WrongDataException("length of " + dots.toString() + " less than 3");
         } else {
             throw new WrongDataException("length of " + dots.toString() + " bigger than 3");
-        }
-    }
-
-    public boolean indexValidation(int index) throws WrongDataException {
-        final int DOT_AMOUNT = 3;
-        if (index >= 0 && index < DOT_AMOUNT) {
-            return true;
-        } else if (index < 0) {
-            throw new WrongDataException("index out of range: less than 0");
-        } else {
-            throw new WrongDataException("index out of range: bigger than 2");
         }
     }
 }
